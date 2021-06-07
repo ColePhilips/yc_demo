@@ -11,6 +11,9 @@
         backup_options:
           dir_path: /etc/configs/backup/
       register: config_output
+    
+    - debug:
+      var: config_output
 
     - name: Remove Non Config Lines
       lineinfile:
