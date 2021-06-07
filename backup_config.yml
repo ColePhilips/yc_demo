@@ -12,8 +12,9 @@
           dir_path: /etc/configs/backup/
       register: config_output
     
-    - debug:
-      var: config_output
+    - name: Print config_output variable
+      ansible.builtin.debug:
+        var: config_output
 
    # - name: Remove Non Config Lines
    #   lineinfile:
