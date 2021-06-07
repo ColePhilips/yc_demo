@@ -13,7 +13,7 @@
       register: config_output
     
     - name: Print config_output variable
-      ansible.builtin.debug:
+      debug:
         var: config_output.date
 
     - name: Remove Non Config Lines
