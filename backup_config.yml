@@ -14,7 +14,7 @@
     
     - name: Print config_output variable
       ansible.builtin.debug:
-        var: config_output
+        var: config_output.date
 
     - name: Remove Non Config Lines
       lineinfile:
