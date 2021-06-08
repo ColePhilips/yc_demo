@@ -1,5 +1,5 @@
 ---
-- name: Update NTP SERVER
+- name: Update Clocks
   hosts: "{{ host_group }}"
   connection: network_cli
   gather_facts: no
