@@ -1,0 +1,12 @@
+---
+- name: Update NTP SERVER
+  hosts: "{{ host_group }}"
+  connection: network_cli
+  gather_facts: no
+  
+  tasks:
+    - name: configure host logging
+          cisco.ios.ios_logging:
+            dest: host
+            name: 172.16.0.1
+            state: present
