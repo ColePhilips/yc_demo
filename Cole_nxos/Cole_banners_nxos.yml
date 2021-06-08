@@ -1,0 +1,15 @@
+---
+- name: Update Banner
+  hosts: "{{ host_group }}"
+  connection: network_cli
+  gather_facts: no
+  
+  tasks:
+    - name: configure the banner
+      cisco.nxos.nxos_banner:
+        banner: exec
+        text: |
+          this is my exec banner
+          that contains a multiline
+          string
+        state: present
