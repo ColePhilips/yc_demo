@@ -5,9 +5,26 @@
   gather_facts: no
   
   tasks:
-    - name: UPDATE THE NTP SERVER
+    - name: UPDATE THE NTP SERVER NY
       cisco.ios.ios_ntp:
-        server: "{{NTP_server}}"
+        server: 172.16.0.1
         source_int: Loopback0
         logging: false
         state: present
+      when: "{{host_group}}" == "NY"
+      
+    - name: UPDATE THE NTP SERVER NJ
+      cisco.ios.ios_ntp:
+        server: 172.16.0.2
+        source_int: Loopback0
+        logging: false
+        state: present
+      when: "{{host_group}}" == "NJ"
+
+    - name: UPDATE THE NTP SERVER HK
+      cisco.ios.ios_ntp:
+        server: 172.16.0.3
+        source_int: Loopback0
+        logging: false
+        state: present
+      when: "{{host_group}}" == "HK"
