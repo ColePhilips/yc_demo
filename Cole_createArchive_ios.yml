@@ -1,0 +1,11 @@
+---
+- name: Create Archive
+  hosts: "{{ host_group }}"
+  connection: network_cli
+  gather_facts: no
+  
+  tasks:
+  - name: Create a zip archive of /path/to/foo
+      archive:
+        path: /path/to/foo
+        format: zip
