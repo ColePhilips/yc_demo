@@ -1,0 +1,25 @@
+---
+- name: Update Archieve
+  hosts: "{{ host_group }}"
+  connection: network_cli
+  gather_facts: no
+  
+   tasks:
+    - name: BACKUP THE CONFIG
+      nxos_config:
+        backup: yes
+        backup_options:
+          dir_path: /etc/configs/backup/
+      register: config_output
+
+    - name: Remove Non Config Lines
+      lineinfile:
+        path: "{{ config_output.backup_path }}"
+        line: "Building configuration..."
+        state: absent
+
+    - name: Remove Non Config Lines using Regular Expression
+      lineinfile:
+        path: "{{ config_output.backup_path }}"
+        regexp: 'Current configuration.*'
+        state: absent
