@@ -5,11 +5,32 @@
   gather_facts: no
 
   tasks:
-    - name: Update NTP for nxos
+    - name: Update NTP for nxos NY
       cisco.nxos.nxos_ntp:
-          server: 1.2.3.4
+          server: 172.16.0.1
           key_id: 32
           prefer: enabled
           host: '{{ inventory_hostname }}'
           username: '{{ un }}'
           password: '{{ pwd }}'
+      when: "{{host_group}}" == "NY"
+      
+    - name: Update NTP for nxos NJ
+      cisco.nxos.nxos_ntp:
+          server: 172.16.0.2
+          key_id: 32
+          prefer: enabled
+          host: '{{ inventory_hostname }}'
+          username: '{{ un }}'
+          password: '{{ pwd }}'
+      when: "{{host_group}}" == "NJ"
+      
+    - name: Update NTP for nxos HK
+      cisco.nxos.nxos_ntp:
+          server: 172.16.0.3
+          key_id: 32
+          prefer: enabled
+          host: '{{ inventory_hostname }}'
+          username: '{{ un }}'
+          password: '{{ pwd }}'
+      when: "{{host_group}}" == "HK"
