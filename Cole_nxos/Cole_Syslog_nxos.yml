@@ -5,8 +5,23 @@
   gather_facts: no
   
   tasks:
-    - name: configure host logging
+    - name: configure host logging NY
           cisco.nxos.nxos_logging:
             dest: host
             name: 172.16.0.1
             state: present
+      when: "{{host_group}}" == "NY"
+      
+    - name: configure host logging NJ
+          cisco.nxos.nxos_logging:
+            dest: host
+            name: 172.16.0.2
+            state: present
+      when: "{{host_group}}" == "NJ"
+      
+    - name: configure host logging HK
+          cisco.nxos.nxos_logging:
+            dest: host
+            name: 172.16.0.3
+            state: present
+      when: "{{host_group}}" == "HK"
