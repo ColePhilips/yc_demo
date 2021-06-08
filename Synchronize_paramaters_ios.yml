@@ -1,0 +1,47 @@
+---
+- name: Update NTP SERVER
+  hosts: "{{ host_group }}"
+  connection: network_cli
+  gather_facts: no
+  
+  tasks:
+    - name: UPDATE THE NTP SERVER
+      cisco.ios.ios_ntp:
+        server: "{{NTP_server}}"
+        source_int: Loopback0
+        logging: false
+        state: present
+     
+     
+    - name: configure host logging
+      cisco.ios.ios_logging:
+        dest: host
+        name: 172.16.0.1
+        state: present
+    
+    - name: create a new user
+      cisco.ios.ios_user:
+        name: ansible
+        nopassword: true
+        sshkey: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+        state: present
+         
+    - name: configure the login banner
+      cisco.ios.ios_banner:
+        banner: login
+        text: |
+          this is my login banner
+          that contains a multiline
+          string
+        state: present
+     
+    - name: Create a zip archive of /path/to/foo
+      archive:
+        path: /path/to/foo
+        format: zip
+        
+    - name: sync clock
+      line:
+        - Clock timezone EST -5 0
+        - Clock summer-time EST-DST recurring
+     
