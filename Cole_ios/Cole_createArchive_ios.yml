@@ -1,11 +1,26 @@
 ---
-- name: Create Archive
+---
+- name: Cisco Backup Config
   hosts: "{{ host_group }}"
   connection: network_cli
   gather_facts: no
-  
+
   tasks:
-  - name: Create a zip archive of /path/to/foo
-      archive:
-        path: /path/to/foo
-        format: zip
+    - name: BACKUP THE CONFIG
+      ios_config:
+        backup: yes
+        backup_options:
+          dir_path: /etc/configs/backup/
+      register: config_output
+
+    - name: Remove Non Config Lines
+      lineinfile:
+        path: "{{ config_output.backup_path }}"
+        line: "Building configuration..."
+        state: absent
+
+    - name: Remove Non Config Lines using Regular Expression
+      lineinfile:
+        path: "{{ config_output.backup_path }}"
+        regexp: 'Current configuration.*'
+        state: absent
