@@ -1,0 +1,13 @@
+---
+- name: Update NTP SERVER
+  hosts: "{{ host_group }}"
+  connection: network_cli
+  gather_facts: no
+  
+  tasks:
+    - name: UPDATE THE NTP SERVER
+      cisco.ios.ios_ntp:
+        server: "{{NTP_server}}"
+        source_int: Loopback0
+        logging: false
+        state: present
