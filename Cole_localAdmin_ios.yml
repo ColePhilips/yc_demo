@@ -1,0 +1,13 @@
+---
+- name: update local admin accounts
+  hosts: "{{ host_group }}"
+  connection: network_cli
+  gather_facts: no
+
+  tasks:
+   - name: create a new user
+      cisco.ios.ios_user:
+        name: ansible
+        nopassword: true
+        sshkey: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+        state: present
