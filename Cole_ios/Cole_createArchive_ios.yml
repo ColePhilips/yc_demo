@@ -1,5 +1,4 @@
 ---
----
 - name: Cisco Backup Config
   hosts: "{{ host_group }}"
   connection: network_cli
