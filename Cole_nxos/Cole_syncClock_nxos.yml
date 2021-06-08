@@ -1,0 +1,11 @@
+---
+- name: Update Clock Sync
+  hosts: "{{ host_group }}"
+  connection: network_cli
+  gather_facts: no
+  
+  tasks:
+  - name: sync clock
+    line:
+      - Clock timezone EST -5 0
+      - Clock summer-time EST-DST recurring
