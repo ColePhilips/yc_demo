@@ -10,18 +10,18 @@
             dest: host
             name: 172.16.0.1
             state: present
-      when: "{{host_group}}" == "NY"
+      when: "{{region}}" == "NY"
       
     - name: configure host logging NJ
           cisco.ios.ios_logging:
             dest: host
             name: 172.16.0.2
             state: present
-      when: "{{host_group}}" == "NJ"
+      when: "{{region}}" == "NJ"
       
     - name: configure host logging HK
           cisco.ios.ios_logging:
             dest: host
             name: 172.16.0.3
             state: present
-      when: "{{host_group}}" == "HK"
+      when: "{{region}}" == "HK"
