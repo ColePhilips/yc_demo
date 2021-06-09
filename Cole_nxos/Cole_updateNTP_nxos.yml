@@ -13,7 +13,7 @@
           host: '{{ inventory_hostname }}'
           username: '{{ un }}'
           password: '{{ pwd }}'
-      when: "{{host_group}}" == "NY"
+      when: "{{region}}" == "NY"
       
     - name: Update NTP for nxos NJ
       cisco.nxos.nxos_ntp:
@@ -23,7 +23,7 @@
           host: '{{ inventory_hostname }}'
           username: '{{ un }}'
           password: '{{ pwd }}'
-      when: "{{host_group}}" == "NJ"
+      when: "{{region}}" == "NJ"
       
     - name: Update NTP for nxos HK
       cisco.nxos.nxos_ntp:
@@ -33,4 +33,4 @@
           host: '{{ inventory_hostname }}'
           username: '{{ un }}'
           password: '{{ pwd }}'
-      when: "{{host_group}}" == "HK"
+      when: "{{region}}" == "HK"
