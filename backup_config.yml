@@ -12,10 +12,7 @@
           dir_path: /etc/configs/backup/
       register: config_output
     
-    - name: Print config_output variable
-      debug:
-        var: config_output.date
-
+    
     - name: Remove Non Config Lines
       lineinfile:
         path: "{{ config_output.backup_path }}"
