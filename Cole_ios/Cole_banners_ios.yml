@@ -5,7 +5,7 @@
   
   tasks:
   - name: configure the login banner
-      cisco.ios.ios_banner:
+      ios_banner:
         banner: login
         text: |
           this is my login banner
