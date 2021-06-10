@@ -6,7 +6,7 @@
   
   tasks:
     - name: UPDATE THE NTP SERVER NY
-      cisco.ios.ios_ntp:
+      ios_ntp:
         server: 172.16.0.1
         source_int: Loopback0
         logging: false
@@ -14,7 +14,7 @@
       when: region == "NY"
       
     - name: UPDATE THE NTP SERVER NJ
-      cisco.ios.ios_ntp:
+      ios_ntp:
         server: 172.16.0.2
         source_int: Loopback0
         logging: false
@@ -22,7 +22,7 @@
       when: region == "NJ"
 
     - name: UPDATE THE NTP SERVER HK
-      cisco.ios.ios_ntp:
+      ios_ntp:
         server: 172.16.0.3
         source_int: Loopback0
         logging: false
