@@ -6,7 +6,7 @@
   
   tasks:
     - name: configure the banner
-      cisco.nxos.nxos_banner:
+      nxos_banner:
         banner: exec
         text: |
           this is my exec banner
