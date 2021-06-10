@@ -11,7 +11,7 @@
         source_int: Loopback0
         logging: false
         state: present
-      when: "{{region}}" == "NY"
+      when: region == "NY"
       
     - name: UPDATE THE NTP SERVER NJ
       cisco.ios.ios_ntp:
@@ -19,7 +19,7 @@
         source_int: Loopback0
         logging: false
         state: present
-      when: "{{region}}" == "NJ"
+      when: region == "NJ"
 
     - name: UPDATE THE NTP SERVER HK
       cisco.ios.ios_ntp:
@@ -27,4 +27,4 @@
         source_int: Loopback0
         logging: false
         state: present
-      when: "{{region}}" == "HK"
+      when: region == "HK"
